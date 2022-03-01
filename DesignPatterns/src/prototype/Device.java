@@ -1,6 +1,6 @@
 package prototype;
 
-public abstract class Device {
+public abstract class Device implements Cloneable {
 
 	private String brand;
 	private int batteryCapacity;
@@ -19,6 +19,11 @@ public abstract class Device {
 	
 	public void setBatteryCapacity(int batteryCapacity) {
 		this.batteryCapacity = batteryCapacity;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 	
 }
