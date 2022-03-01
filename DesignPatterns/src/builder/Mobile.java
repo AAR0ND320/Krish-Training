@@ -14,15 +14,11 @@ public class Mobile {
 		this.dropProtection = builder.dropProtection;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		return "Mobile [waterproof=" + waterproof + ", batteryCapacity=" + batteryCapacity + ", serviceWarranty="
 				+ serviceWarranty + ", dropProtection=" + dropProtection + "]";
 	}
-
-
 
 	static class Builder {
 		
