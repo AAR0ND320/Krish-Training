@@ -26,4 +26,16 @@ public class Inventory {
 		devices.put(DeviceType.LAPTOP, laptop);
 	}
 	
+	public Device getDevice(DeviceType deviceType) {
+		Device device = null;
+		
+		try {
+			device = (Device) devices.get(deviceType).clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		
+		return device;
+	}
+	
 }
