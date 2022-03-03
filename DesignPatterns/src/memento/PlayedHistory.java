@@ -13,6 +13,8 @@ public class PlayedHistory {
 	public void previous(NowPlaying nowPlaying) {
 		if(!history.isEmpty()) {
 			nowPlaying.previous(history.pop());
+		} else {
+			System.out.println("End of played history.");
 		}
 	}
 
