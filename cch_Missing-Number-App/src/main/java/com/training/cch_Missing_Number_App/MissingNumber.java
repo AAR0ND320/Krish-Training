@@ -6,28 +6,28 @@ import java.util.Scanner;
 
 public class MissingNumber {
 	private Scanner scanner;
-	private List<Integer> numList;
+	private List<Integer> numList = new ArrayList<>();
 
 	public MissingNumber() {
 		scanner = new Scanner(System.in);
 	}
 	
-	public void testApp(String sequence) {
-		splitSequence(sequence);
+	public int testApp(String sequence) {
+		return splitSequence(sequence);
 	}
 	
 	public void startApp() {
 		System.out.println( "Enter a sequence with comma (,) delimiter" );
         String inputSequence = scanner.nextLine();
         
-        splitSequence(inputSequence);
+        System.out.println(splitSequence(inputSequence));
 	}
 	
-	private void splitSequence(String sequence) {
+	private int splitSequence(String sequence) {
 		String[] sequenceArr = sequence.split(",");
 		
 //		int[] numArr = new int[sequenceArr.length];
-		numList = new ArrayList<>();
+//		numList = new ArrayList<>();
 		
 		int total = 0; // total of all the given values
 		
@@ -41,19 +41,33 @@ public class MissingNumber {
 				total += num;
 			}
 		} catch (Exception e) {
-			System.out.println("INVALID INPUT: The sequence should only contain integers with a comma (,) delimiter!");
-			return; // Exit from the application here
+			System.out.println("INVALID INPUT: The sequence should only contain INTEGERS with a COMMA (,) delimiter!");
+			System.exit(0); // Exit from the application here
 		}
 		
 //		int[] minMaxArr = getMinMaxValue(numArr);
 		int[] minMaxArr = getMinMaxValue(numList);
 		
-		int requiredTotal = getRequiredTotal(minMaxArr);
+		int min = minMaxArr[0];
+		int max = minMaxArr[1];
+		
+		int requiredTotal = getRequiredTotal(min, max);
 		
 		int missingValue = requiredTotal - total;
 		
-		if(missingValue == 0) {
-			
+		System.out.println(max + "    " + min);
+		System.out.println(numList.size());
+		
+		if ((max - min) > numList.size()) { // more than one number is missing
+			System.out.println("INVALID SEQUENCE!");
+			System.exit(0); // Exit from the application here
+		}
+		
+		if(numList.contains(missingValue)) {
+			// The value will be either at the beginning or end.
+			return missingValue;
+		} else {
+			return missingValue;
 		}
 	}
 
@@ -83,21 +97,21 @@ public class MissingNumber {
 		
 		for(int number : numbers) {
 			if (number > minMaxArr[0]) {
-				minMaxArr[0] = number;
+				minMaxArr[1] = number;
 			}
 
 			if (number < minMaxArr[1]) {
-				minMaxArr[1] = number;
+				minMaxArr[0] = number;
 			}
 		}
 		return minMaxArr;
 	}
 	
-	private int getRequiredTotal(int[] minMaxArr) {
+	private int getRequiredTotal(int min, int max) {
 		double n = numList.size() + 1; // double in case n is an odd number
 		
 		// Calculate required total using (n/2) * (first number + last number).
-		return (int) ((n/2) * (minMaxArr[0] + minMaxArr[1]));
+		return (int) ((n/2) * (max + min));
 	}
 
 	/* 
