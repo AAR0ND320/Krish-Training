@@ -28,7 +28,7 @@ public class AppTest
 	}
 	
 	@AfterEach
-	public void tearDown() {
+	void tearDown() {
 	    System.setOut(standardOut);
 	}
 	
@@ -59,7 +59,7 @@ public class AppTest
 	@Test
 	@DisplayName("More than one number missing.")
 	void testMultipleMissing() {
-		String expectOutput = "IINVALID SEQUENCE: There can only be one number missing.";
+		String expectOutput = "INVALID SEQUENCE: There can only be one number missing.";
 		
 		missingNumber.testApp("19,22,24,21");
 

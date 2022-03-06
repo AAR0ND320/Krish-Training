@@ -35,9 +35,9 @@ public class AppTest
 	@Test
 	@DisplayName("Testing the word: apple")
 	void simpleWordTest() {
-		String expectOut = "A = 1\n"
-				+ "E = 1\n"
-				+ "L = 1\n"
+		String expectOut = "A = 1\r\n"
+				+ "E = 1\r\n"
+				+ "L = 1\r\n"
 				+ "P = 2";
 		
 		app.testApp("apple");
@@ -50,10 +50,10 @@ public class AppTest
 	@Test
 	@DisplayName("Testing the word: abracadabra")
 	void anotherWordTest() {
-		String expectOut = "A = 5\n"
-				+ "B = 2\n"
-				+ "C = 1\n"
-				+ "D = 1\n"
+		String expectOut = "A = 5\r\n"
+				+ "B = 2\r\n"
+				+ "C = 1\r\n"
+				+ "D = 1\r\n"
 				+ "R = 2";
 		
 		app.testApp("abracadabra");
@@ -66,20 +66,20 @@ public class AppTest
 	@Test
 	@DisplayName("Testing the word: supercalifragilisticexpialidocious")
 	void bigWordTest() {
-		String expectOut = "A = 3\n"
-				+ "C = 3\n"
-				+ "D = 1\n"
-				+ "E = 2\n"
-				+ "F = 1\n"
-				+ "G = 1\n"
-				+ "I = 7\n"
-				+ "L = 3\n"
-				+ "O = 2\n"
-				+ "P = 2\n"
-				+ "R = 2\n"
-				+ "S = 3\n"
-				+ "T = 1\n"
-				+ "U = 2\n"
+		String expectOut = "A = 3\r\n"
+				+ "C = 3\r\n"
+				+ "D = 1\r\n"
+				+ "E = 2\r\n"
+				+ "F = 1\r\n"
+				+ "G = 1\r\n"
+				+ "I = 7\r\n"
+				+ "L = 3\r\n"
+				+ "O = 2\r\n"
+				+ "P = 2\r\n"
+				+ "R = 2\r\n"
+				+ "S = 3\r\n"
+				+ "T = 1\r\n"
+				+ "U = 2\r\n"
 				+ "X = 1";
 		
 		app.testApp("supercalifragilisticexpialidocious");
