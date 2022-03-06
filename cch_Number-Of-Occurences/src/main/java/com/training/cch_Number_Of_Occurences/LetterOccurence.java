@@ -30,13 +30,24 @@ public class LetterOccurence {
 		List<String> letterList = new ArrayList<>();
 		
 		for(int i=0 ; i < word.length() ; i++) {
-			String letter = String.valueOf(word.charAt(i)).toUpperCase();
+			char letter = word.charAt(i);
 			
-			if(letterMap.containsKey(letter)) {
-				letterMap.put(letter, letterMap.get(letter) + 1);
+			String letterStr = "";
+			
+			if (Character.isAlphabetic(letter)) {
+				letterStr = String.valueOf(letter).toUpperCase();
+			} else if(letter == ' ') {
+				continue;
 			} else {
-				letterMap.put(letter, 1);
-				letterList.add(letter);
+				System.out.println("INVALID INPUT: The word should only contain alphabetical letters.");
+				return;
+			}
+			
+			if(letterMap.containsKey(letterStr)) {
+				letterMap.put(letterStr, letterMap.get(letterStr) + 1);
+			} else {
+				letterMap.put(letterStr, 1);
+				letterList.add(letterStr);
 			}
 		}
 		

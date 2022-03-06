@@ -33,23 +33,8 @@ public class AppTest
 	}
 	
 	@Test
-	@DisplayName("Testing the word: apple")
-	void simpleWordTest() {
-		String expectOut = "A = 1\r\n"
-				+ "E = 1\r\n"
-				+ "L = 1\r\n"
-				+ "P = 2";
-		
-		app.testApp("apple");
-		
-		String actualOut = outputStreamCaptor.toString().trim();
-		
-		assertEquals(expectOut, actualOut);
-	}
-	
-	@Test
 	@DisplayName("Testing the word: abracadabra")
-	void anotherWordTest() {
+	void simpleWordTest() {
 		String expectOut = "A = 5\r\n"
 				+ "B = 2\r\n"
 				+ "C = 1\r\n"
@@ -60,33 +45,51 @@ public class AppTest
 		
 		String actualOut = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOut, actualOut);
+		assertEquals(expectOut, actualOut, "EXPECTED: <" + expectOut + ">\n"
+				+ "ACTUAL: <" + actualOut + ">");
 	}
 	
 	@Test
-	@DisplayName("Testing the word: supercalifragilisticexpialidocious")
-	void bigWordTest() {
-		String expectOut = "A = 3\r\n"
-				+ "C = 3\r\n"
-				+ "D = 1\r\n"
-				+ "E = 2\r\n"
-				+ "F = 1\r\n"
-				+ "G = 1\r\n"
-				+ "I = 7\r\n"
-				+ "L = 3\r\n"
-				+ "O = 2\r\n"
-				+ "P = 2\r\n"
-				+ "R = 2\r\n"
-				+ "S = 3\r\n"
-				+ "T = 1\r\n"
-				+ "U = 2\r\n"
-				+ "X = 1";
+	@DisplayName("Testing the input: an apple")
+	void whitespaceWordTest() {
+		String expectOut = "A = 2\r\n"
+				+ "E = 1\r\n"
+				+ "L = 1\r\n"
+				+ "N = 1\r\n"
+				+ "P = 2";
 		
-		app.testApp("supercalifragilisticexpialidocious");
+		app.testApp("an apple");
 		
 		String actualOut = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOut, actualOut);
+		assertEquals(expectOut, actualOut, "EXPECTED: <" + expectOut + ">\n"
+				+ "ACTUAL: <" + actualOut + ">");
+	}
+	
+	@Test
+	@DisplayName("Testing the word: apple1")
+	void numberWordTest() {
+		String expectOut = "INVALID INPUT: The word should only contain alphabetical letters.";
+		
+		app.testApp("apple1");
+		
+		String actualOut = outputStreamCaptor.toString().trim();
+		
+		assertEquals(expectOut, actualOut, "EXPECTED: <" + expectOut + ">\n"
+				+ "ACTUAL: <" + actualOut + ">");
+	}
+	
+	@Test
+	@DisplayName("Testing the word: @pple")
+	void specialCharacterWordTest() {
+		String expectOut = "INVALID INPUT: The word should only contain alphabetical letters.";
+		
+		app.testApp("@pple");
+		
+		String actualOut = outputStreamCaptor.toString().trim();
+		
+		assertEquals(expectOut, actualOut, "EXPECTED: <" + expectOut + ">\n"
+				+ "ACTUAL: <" + actualOut + ">");
 	}
 	
 }

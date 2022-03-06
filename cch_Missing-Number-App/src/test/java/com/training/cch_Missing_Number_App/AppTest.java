@@ -41,7 +41,8 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 	
 	@Test
@@ -53,7 +54,8 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 	
 	@Test
@@ -65,7 +67,8 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 	
 	@Test
@@ -77,7 +80,8 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 	
 	@Test
@@ -89,7 +93,8 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 	
 	@Test
@@ -101,6 +106,7 @@ public class AppTest
 
 		String actualOutput = outputStreamCaptor.toString().trim();
 		
-		assertEquals(expectOutput, actualOutput);
+		assertEquals(expectOutput, actualOutput, "EXPECTED: <" + expectOutput + ">\n"
+				+ "ACTUAL: <" + actualOutput + ">");
 	}
 }
