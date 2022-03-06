@@ -35,7 +35,7 @@ public class AppTest
 	@Test
 	@DisplayName("Missing value in the middle of the sequence.")
 	void testMissingMiddle() {
-		String expectOutput = "20";
+		String expectOutput = "Missing number is: 20";
 		
 		missingNumber.testApp("19,22,24,21,23");
 
@@ -74,7 +74,7 @@ public class AppTest
 	@Test
 	@DisplayName("Number missing at the beginning.")
 	void testFirstMissing() {
-		String expectOutput = "21";
+		String expectOutput = "Missing number is: 21";
 		
 		missingNumber.testApp(",23,22,25,24");
 
@@ -87,7 +87,7 @@ public class AppTest
 	@Test
 	@DisplayName("Number missing at the end.")
 	void testLastMissing() {
-		String expectOutput = "26";
+		String expectOutput = "Missing number is: 26";
 		
 		missingNumber.testApp("23,22,25,24,");
 

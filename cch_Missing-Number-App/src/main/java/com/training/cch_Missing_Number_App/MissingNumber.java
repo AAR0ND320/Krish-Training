@@ -58,19 +58,21 @@ public class MissingNumber {
 			return;
 		}
 		
+		String output = "Missing number is: ";
+		
 		if(numList.contains(missingValue)) {
 			// The value will be either at the beginning or end.
 			if(sequence.charAt(0) == ',') {
 				missingValue = min - 1;
-				System.out.println(missingValue);
+				System.out.println(output + missingValue);
 			} else if(sequence.charAt(sequence.length() - 1) == ',') {
 				missingValue = max + 1;
-				System.out.println(missingValue);
+				System.out.println(output + missingValue);
 			} else {
 				System.out.println("Cannot decide whether the missing number is at the beginning or end of sequence.");
 			}
 		} else {
-			System.out.println(missingValue);
+			System.out.println(output + missingValue);
 		}
 	}
 	
