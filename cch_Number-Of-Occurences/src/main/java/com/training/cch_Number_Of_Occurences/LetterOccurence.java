@@ -20,7 +20,7 @@ public class LetterOccurence {
 	}
 	
 	public void startApp() {
-		System.out.println("Enter a word to calculate its letters");
+		System.out.println("Enter a word to calculate each of its letter occurences");
 		String inputWord = scanner.nextLine();
 		
 		findOccurences(inputWord);
