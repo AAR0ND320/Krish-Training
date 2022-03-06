@@ -13,7 +13,7 @@ The sequence will have the following characteristics:
   2. There will always be a missing number.
   3. Missing number can be in either the beginning or the end of the sequence as well.
 
-## Dealing with Assumption 3
+## Dealing with Characteristic 3
 The third assumption suggests that the missing number from the sequence could be at the beginning or the end of the sequence as well. This makes this problem more complicated since it would be difficult to try to automatically assume where the missing number would be placed.
 
 When dealing with sequences in mathematics, we are given a starting number along with the rest of the information we need for a sequence. This starting number can be used to find the other terms and to calculate the sum of the given terms. However, we have not been given a starting number for the series as it can be random.
