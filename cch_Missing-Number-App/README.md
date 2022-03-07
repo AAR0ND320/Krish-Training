@@ -18,4 +18,4 @@ The third assumption suggests that the missing number from the sequence could be
 
 When dealing with sequences in mathematics, we are given a starting number along with the rest of the information we need for a sequence. This starting number can be used to find the other terms and to calculate the sum of the given terms. However, we have not been given a starting number for the series as it can be random.
 
-To overcome this I made another assumption. This assumption is that the user would provide some help when the program faces this problem by adding an extra de-limeter at either the beginning or the end of the sequence, indicating where the missing number will be placed if we come accross this situation.
+To overcome this I made another assumption. This assumption is that the user would provide some help when the program faces this problem by adding an extra de-limeter at either the beginning or the end of the sequence, indicating where the missing number will be placed if we come across this situation.
