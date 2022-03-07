@@ -1,13 +1,21 @@
 function checkAnagram(word1, word2) {
-    let first = word1.toUppercase();
-    let second = word2.toUppercase();
+    let first = word1.toUpperCase();
+    let second = word2.toUpperCase();
 
-    if(first.length != second.length) {
+    if(first.length !== second.length) {
         return false;
     }
 
-    
+    let word1Map = mapWordLetters(first);
+    let word2Map = mapWordLetters(second);
 
+    for(let letter in word1Map) {
+        if(word1Map[letter] !== word2Map[letter]) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function mapWordLetters(word) {
