@@ -1,3 +1,13 @@
+function start(input) {
+    let words = input.split(' ');
+
+    if(checkAnagram(words[0], words[1])) {
+        console.log("The two words are anagrams of each other!");
+    } else {
+        console.log("The two words are NOT anagrams of each other!");
+    }
+}
+
 function checkAnagram(word1, word2) {
     let first = word1.toUpperCase();
     let second = word2.toUpperCase();
@@ -34,4 +44,4 @@ function mapWordLetters(word) {
     return letterMap;
 }
 
-module.exports.checkAnagram = checkAnagram;
+module.exports.start = start;
