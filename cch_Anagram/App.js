@@ -1,12 +1,5 @@
 const anagramCheck = require('./Anagram');
 
-// const readline = require('readline');
-
-// const scanner = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
-
 const scanner = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
