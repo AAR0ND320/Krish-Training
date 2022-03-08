@@ -1,5 +1,3 @@
-const invalidInput = "INVALID INPUT: only input numbers with a comma (,) de-limiter";
-
 function start(userInput) {
     let splitArray = userInput.split(',');
 
@@ -8,20 +6,18 @@ function start(userInput) {
     for (let i = 0; i < splitArray.length; i++) {
         let value = parseInt(splitArray[i]);
 
-        console.log(value);
-
         if (isNaN(value)) {
-            return invalidInput;
+            return "INVALID INPUT: only input numbers with a comma (,) de-limiter";
         }
 
         intArray[i] = value;
     }
 
-    console.log(intArray);
+    if (intArray.length < 4) {
+        return "INVALID INPUT: You need to input more than 3 numbers"
+    }
 
     intArray = bubblesortNumbers(intArray);
-
-    console.log(intArray);
 
     let outputString = "The third largest number is: " + intArray[2];
 

@@ -7,7 +7,7 @@ const scanner = require('readline').createInterface({
 
 function app() {
     let inputString = "";
-    let questionString = "Enter a series of numbers separated by a comma (,) de-limiter: ";
+    let questionString = "Enter a more than 3 numbers separated by a comma (,) de-limiter: ";
 
     scanner.question(questionString, function(input) {
         inputString = input;
