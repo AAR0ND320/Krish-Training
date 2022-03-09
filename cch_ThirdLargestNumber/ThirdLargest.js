@@ -19,7 +19,25 @@ function start(userInput) {
 
     intArray = bubblesortNumbers(intArray);
 
-    let outputString = "The third largest number is: " + intArray[2];
+    let place = 1;
+
+    let outputString = "";
+
+    for (let i = 1 ; i < intArray.length ; i++) {
+        if (intArray[i] === intArray[i - 1]) {
+            continue;
+        } else {
+            place++;
+
+            if (place === 3) {
+                outputString = "The third largest number is: " + intArray[i];
+
+                break;
+            }
+        }
+    }
+
+    // let outputString = "The third largest number is: " + intArray[2];
 
     return outputString;
 }
