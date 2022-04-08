@@ -1,5 +1,7 @@
 package com.aaron.training.bfs;
 
+import java.util.Queue;
+
 public class BreadthFirst {
 	
 	class TreeNode {
@@ -13,7 +15,7 @@ public class BreadthFirst {
 		}
 	}
 
-	public void createTree() {
+	private TreeNode createTree() {
 		TreeNode nodeA = new TreeNode("A");
 		TreeNode nodeB = new TreeNode("B");
 		TreeNode nodeC = new TreeNode("C");
@@ -31,6 +33,12 @@ public class BreadthFirst {
 		nodeC.left = nodeG;
 		
 		nodeE.right = nodeF;
+		
+		return nodeA;
+	}
+	
+	public void startApp() {
+		TreeNode root = createTree();
 	}
 	
 }
