@@ -1,8 +1,11 @@
 package com.aaron.training.bfs;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirst {
+	
+	Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
 	
 	class TreeNode {
 		boolean visited;
@@ -38,7 +41,28 @@ public class BreadthFirst {
 	}
 	
 	public void startApp() {
-		TreeNode root = createTree();
+		nodeQueue.add(createTree());
+		
+		traverseTree(nodeQueue.remove());
+	}
+	
+	private void traverseTree(TreeNode node) {
+		if (node == null) {
+			return;
+		}
+		
+		node.visited = true;
+		System.out.println(node.data);
+		
+		if (node.right != null) {
+			nodeQueue.add(node.right);
+		}
+		
+		if (node.left != null) {
+			nodeQueue.add(node.left);
+		}
+		
+		traverseTree(nodeQueue.poll());
 	}
 	
 }
