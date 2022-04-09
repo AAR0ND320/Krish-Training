@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Stack;
 
 public class Articulation {
-	
+
 	private int currentDepth = 1;
-	
+
 	private Stack<GraphNode> nodeStack = new Stack<>();
+	private List<GraphNode> nodeList = new ArrayList<>();
 
 	class GraphNode {
 		boolean visited;
@@ -17,7 +18,8 @@ public class Articulation {
 		String data;
 
 		int depthIndex;
-		
+		int lowIndex;
+
 		GraphNode parent;
 		GraphNode backNode;
 		List<GraphNode> connectedNodes;
@@ -71,31 +73,23 @@ public class Articulation {
 		nodeI.connectedNodes.add(nodeG);
 		nodeI.connectedNodes.add(nodeH);
 
+		nodeList.add(nodeA);
+		nodeList.add(nodeB);
+		nodeList.add(nodeC);
+		nodeList.add(nodeD);
+		nodeList.add(nodeE);
+		nodeList.add(nodeF);
+		nodeList.add(nodeG);
+		nodeList.add(nodeH);
+		nodeList.add(nodeI);
+
 		return nodeA;
 	}
 
 	// Uses DFS to find the depth index of each node
 	private void initDepthIndex(GraphNode node) {
-//		if (!node.visited) {
-//			node.visited = true;
-//			
-//			node.depthIndex = currentDepth++;
-//			
-//			boolean isAllVisited = true;
-//
-//			for (GraphNode next : node.connectedNodes) {
-//				if (!next.visited) {
-//					isAllVisited = false;
-//				}
-//				
-//				if (isAllVisited && node.connectedNodes.size() > 1) {
-//					
-//				}
-//			}
-//		}
-		
 		nodeStack.push(node);
-		
+
 		node.depthIndex = currentDepth++;
 
 		node.visited = true;
@@ -103,12 +97,12 @@ public class Articulation {
 		for (GraphNode next : node.connectedNodes) {
 			if (!next.visited) {
 				next.parent = node;
-				
+
 				initDepthIndex(next);
 			} else {
 				if (next.depthIndex < node.depthIndex && next != node.parent) {
 					node.hasBackTrack = true;
-					
+
 					node.backNode = next;
 				}
 			}
@@ -116,20 +110,51 @@ public class Articulation {
 
 		nodeStack.pop();
 
-		System.out.println(node.data + " - " + node.depthIndex + ", Has Bactrack? = "
-				+ node.hasBackTrack/* + ", Parent = " + node.parent.data */);
+//		System.out.println(node.data + " - " + node.depthIndex + ", Has Backtrack? = "
+//				+ node.hasBackTrack/* + ", Parent = " + node.parent.data */);
 	}
 
 	// recursive function to find the lowest index
 	// returns integer index
 	// only allow one backtrack to be used
-	private void findLowIndex(GraphNode node) {
-		boolean hasBacktracked = false;
+	private int findLowIndex(GraphNode node) {
+		if (node.depthIndex == 1) {
+			return 1;
+		} else {
+			if (node.backNode != null) {
+				return node.backNode.depthIndex;
+			}
+
+			int lowestIndex = currentDepth;
+
+			for (GraphNode next : node.connectedNodes) {
+				if (next == node.parent)
+					continue;
+				
+				int index = findLowIndex(next);
+
+				if (index < lowestIndex) {
+					lowestIndex = index;
+				}
+				
+				if (lowestIndex <= node.depthIndex) {
+					return lowestIndex;
+				}
+			}
+
+			return lowestIndex;
+		}
 	}
 
 	public void startApp() {
 		GraphNode rootNode = createGraph();
-		
+
 		initDepthIndex(rootNode);
+
+		for (GraphNode node : nodeList) {
+			node.lowIndex = findLowIndex(node);
+
+			System.out.println(node.data + node.lowIndex);
+		}
 	}
 }
