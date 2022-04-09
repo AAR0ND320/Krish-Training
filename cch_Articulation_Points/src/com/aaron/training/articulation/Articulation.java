@@ -23,10 +23,12 @@ public class Articulation {
 		GraphNode parent;
 		GraphNode backNode;
 		List<GraphNode> connectedNodes;
+		List<GraphNode> childNodes;
 
 		GraphNode(String data) {
 			this.data = data;
 			this.connectedNodes = new ArrayList<>();
+			this.childNodes = new ArrayList<>();
 		}
 	}
 
@@ -97,6 +99,7 @@ public class Articulation {
 		for (GraphNode next : node.connectedNodes) {
 			if (!next.visited) {
 				next.parent = node;
+				node.childNodes.add(next);
 
 				initDepthIndex(next);
 			} else {
@@ -109,9 +112,6 @@ public class Articulation {
 		}
 
 		nodeStack.pop();
-
-//		System.out.println(node.data + " - " + node.depthIndex + ", Has Backtrack? = "
-//				+ node.hasBackTrack/* + ", Parent = " + node.parent.data */);
 	}
 
 	// recursive function to find the lowest index
@@ -127,16 +127,13 @@ public class Articulation {
 
 			int lowestIndex = currentDepth;
 
-			for (GraphNode next : node.connectedNodes) {
-				if (next == node.parent)
-					continue;
-				
+			for (GraphNode next : node.childNodes) {
 				int index = findLowIndex(next);
 
 				if (index < lowestIndex) {
 					lowestIndex = index;
 				}
-				
+
 				if (lowestIndex <= node.depthIndex) {
 					return lowestIndex;
 				}
@@ -153,8 +150,20 @@ public class Articulation {
 
 		for (GraphNode node : nodeList) {
 			node.lowIndex = findLowIndex(node);
+		}
 
-			System.out.println(node.data + node.lowIndex);
+		System.out.println(":::: Articulation Points ::::");
+
+		for (GraphNode node : nodeList) {
+			if (node.parent != null) {
+				for (GraphNode child : node.childNodes) {
+					if (child.lowIndex >= node.depthIndex) {
+						System.out.println(node.data);
+						
+						break;
+					}
+				}
+			}
 		}
 	}
 }
