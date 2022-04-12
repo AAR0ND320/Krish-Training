@@ -5,6 +5,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/AAR0ND320/spring-cloud-config-store
+          uri: https://github.com/AAR0ND320/microservices-cloud-config-store
           search-paths:
-           - '*service'
+           - 'service-config/*service'
